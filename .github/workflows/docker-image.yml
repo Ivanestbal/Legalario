@@ -13,7 +13,7 @@ jobs:
      - name: checkout
        uses: actions/checkout@v4
      - name: build image
-       run: ducker build ./api/ -t ivan12345abc/legatario
+       run: docker build ./api/ -t ivan12345abc/legatario
      - name: push image
        run: |
          docker login -u ${{ secrets.DOCKER_USERNAME }} -p $(( secrets.DOCKER_PASSWORD }}

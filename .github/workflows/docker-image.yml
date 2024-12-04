@@ -1,5 +1,6 @@
 name: Update docker image
-
+permisions:
+  contents: read
 on:
   push:
     branches: [ "main" ]
@@ -13,8 +14,8 @@ jobs:
       - name: checks 
         uses: action/checkout@v4
       - name: build image
-        run: docker build . -t ivan12345abc/legalario_hub
+        run: docker build . -t ivan12345abc/legalario_hub:v1.0
       - name: publish_images
         run:
           docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
-          docker push ivan12345abc/legalario_hub
+          docker push ivan12345abc/legalario_hub:v1.0

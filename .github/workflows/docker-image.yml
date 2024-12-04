@@ -2,8 +2,9 @@ name: Update docker image
 
 on:
   push:
-    branches
+    branches:
       - main
+      
   
 
 jobs:

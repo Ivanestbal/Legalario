@@ -20,9 +20,7 @@ jobs:
           docker login -u $username -p $password
       - name: build image
         id: build-docker-image
-        run: |
-        
-        docker build . -f Dockerfile -t ivan12345abc/legalario_hub:v1.0
+        run: docker build . -f Dockerfile -t ivan12345abc/legalario_hub:v1.0
       - name: push the docker image
         id: push-docker-image
         run: docker push ${{secrets.DOCKER_USERNAME}}//legalario_hub:v1.0

@@ -21,7 +21,7 @@ jobs:
       - name: build image
         id: build-docker-image
         run: |
-        ls -la
+        
         docker build . -f Dockerfile -t ivan12345abc/legalario_hub:v1.0
       - name: push the docker image
         id: push-docker-image

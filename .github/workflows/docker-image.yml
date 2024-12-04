@@ -32,5 +32,5 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER}}@${{ secrets.EC2_INSTANCE_IP}} << 'EOF'
           docker pull ivan12345abc/legalario_hub:v1.0
           docker stop $(docker ps -a -q) ||
-          docker run -d -p 80:80 ivan12345abc/legalario_hub:v1.0
+          docker run -d -p 8080:8080 ivan12345abc/legalario_hub:v1.0
           EOF

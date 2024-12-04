@@ -30,7 +30,7 @@ jobs:
       - name: Deploy Docker image
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER}}@${{ secrets.EC2_INSTANCE_IP}} << 'EOF'
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD}}
           docker pull ivan12345abc/legalario_hub:v1.0
-          docker container run -d -p 8080:80 --name legalario_container legalario_hub
+          docker stop $(ddocker ps -a -q) || ture
+          docker  run -d -p 8080:80 --name legalario_container:v1.0
           EOF

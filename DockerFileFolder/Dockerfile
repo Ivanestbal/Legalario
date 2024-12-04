@@ -1,4 +1,4 @@
 #Base image
 FROM nginx:latest
 
-COPY index.html /usr/share/nginx/html
+COPY . /usr/share/nginx/html

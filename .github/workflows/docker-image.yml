@@ -1,10 +1,11 @@
-name: Build and Push Docker image to Docker Hub
+name: Build and Push Docker image EC2
 
 on: push
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -21,3 +22,6 @@ jobs:
           context: DockerFileFolder/
           push: true
           tags: ivan12345abc/legalario_hub:v1.0
+      
+
+

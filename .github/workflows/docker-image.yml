@@ -1,3 +1,4 @@
+
 name: Build and Push Docker image EC2
 
 on: push
@@ -19,7 +20,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: Dockerfile
+          context: DockerFileFolder/
           push: true
           tags: ivan12345abc/legalario_hub:v1.0
      

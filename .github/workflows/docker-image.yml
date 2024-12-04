@@ -5,25 +5,17 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+  paths:
+  'index.html'
 jobs:
   publish_images:
     runs-on: ubuntu-latest
     steps:
       - name: checks 
-        uses: action/checkout@v3
-        id: docker-hub
-        env:
-          username: ${{secrets.DOCKER_USERNAME}}
-          password: ${{secrets.DOCKER_PASSWORD}}
-        run: |
-          docker login -u $username -p $password
+        uses: action/checkout@v4
       - name: build image
-        id: build-docker-image
-        run: docker build . -f Dockerfile -t ivan12345abc/legalario_hub:v1.0
-      - name: push the docker image
-        id: push-docker-image
-        run: docker push ${{secrets.DOCKER_USERNAME}}//legalario_hub:v1.0
-      
-     
-    
+        run: docker build . -t ivan12345abc/legalario_hub:v1.0
+      - name: publish_images
+        run:
+          docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+          docker push ivan12345abc/legalario_hub:v1.0
